@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Destiny Profile | Strengths & Challenges</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-secondary: #F4D03F;
+            --gold-light: #FFE87C;
+            --gold-dark: #B8860B;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(25, 25, 25, 0.9);
+            --text-light: #f5f5f5;
+            --text-muted: #aaa;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            background-image: 
+                radial-gradient(circle at 5% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 95% 90%, rgba(244, 208, 63, 0.08) 0%, transparent 25%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(20, 20, 20, 0.1) 2px, rgba(20, 20, 20, 0.1) 4px);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+        
+        .gold-orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            animation: pulseOrb 8s infinite alternate;
+        }
+        
+        @keyframes pulseOrb {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 50%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 25px rgba(212, 175, 55, 0.3);
+            animation: titleShimmer 4s infinite linear;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes titleShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        .gold-line {
+            height: 2px;
+            width: 400px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), var(--gold-secondary), var(--gold-primary), transparent);
+            margin: 30px auto;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+        
+        /* Tool Cards */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .tool-card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+            border-radius: 20px;
+            padding: 35px 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+        
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .tool-icon {
+            font-size: 3.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
+        }
+        
+        .tool-card:hover .tool-icon {
+            transform: rotateY(180deg) scale(1.2);
+        }
+        
+        .tool-title {
+            font-size: 1.6rem;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .tool-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Profile Sections */
+        .section-container {
+            margin: 70px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-right: 20px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--gold-light);
+            font-weight: 300;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* Insight Cards */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+        }
+        
+        .insight-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 35px 30px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .insight-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .insight-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-primary), transparent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .insight-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .card-heading {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .card-number {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+            margin-right: 20px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+        
+        .card-content {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .example-list {
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        
+        .example-list li {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .example-list li::before {
+            content: '▸';
+            color: var(--gold-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Philosophy Section */
+        .philosophy-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(25, 25, 25, 0.9));
+            border-radius: 20px;
+            padding: 50px;
+            margin: 70px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .philosophy-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .philosophy-icon {
+            font-size: 4rem;
+            color: var(--gold-primary);
+            margin-bottom: 30px;
+            animation: spinSlow 20s linear infinite;
+        }
+        
+        @keyframes spinSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .philosophy-title {
+            font-size: 2.2rem;
+            color: var(--gold-light);
+            margin-bottom: 25px;
+        }
+        
+        .philosophy-text {
+            color: var(--text-light);
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-muted);
+            position: relative;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0 40px;
+        }
+        
+        .footer-link {
+            color: var(--gold-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .footer-link:hover {
+            color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+        }
+        
+        .footer-link i {
+            margin-right: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .tool-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .philosophy-box {
+                padding: 35px 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 40px 15px 30px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .gold-line {
+                width: 250px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        /* Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="gold-orb"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Understanding Your Matrix Destiny Profile</h1>
+            <div class="gold-line"></div>
+            <p class="subtitle">A journey of self-discovery through numerology that focuses on balanced self-awareness rather than predictions. Explore your inherent strengths and challenges to align with your authentic life path.</p>
+        </header>
+        
+        <div class="tool-grid">
+            <div class="tool-card" onclick="window.open('https://matrixdestiny.net/', '_blank')">
+                <div class="tool-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h3 class="tool-title">Density Matrix Calculator</h3>
+                <p class="tool-desc">Calculate your personal numerology matrix using your birth date and name to discover your life path, destiny, and soul urge numbers.</p>
+            </div>
+            
+            <div class="tool-card" onclick="window.open('https://matrix-destiny-numerology.vercel.app/', '_blank')">
+                <div class="tool-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3 class="tool-title">Vercel App Calculator</h3>
+                <p class="tool-desc">Access the Matrix Destiny Numerology calculator hosted on Vercel for modern, fast, and responsive numerology calculations.</p>
+            </div>
+            
+            <div class="tool-card" onclick="window.open('https://docs.google.com/spreadsheets/d/1TZGQj6pYflMwxT6P6ywGa8H7TcO8xd01LjSNFodW-lE/edit?usp=sharing', '_blank')">
+                <div class="tool-icon">
+                    <i class="fas fa-table"></i>
+                </div>
+                <h3 class="tool-title">Request Indexing</h3>
+                <p class="tool-desc">Submit your numerology data to our Google Sheets database for personalized analysis and future reference.</p>
+            </div>
+        </div>
+        
+        <section class="section-container" id="strengths-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div>
+                    <h2 class="section-title">Your Core Strengths</h2>
+                    <p class="section-subtitle">Natural talents and abilities revealed by your Matrix Destiny profile</p>
+                </div>
+            </div>
+            
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="card-heading">
+                        <div class="card-number">01</div>
+                        <div>
+                            <h3 class="card-title">Innate Abilities</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        These are qualities you're naturally gifted with—the talents that feel effortless and authentic to who you are at your core.
+                    </div>
+                    <ul class="example-list">
+                        <li><strong>Life Path 1:</strong> Natural leadership, initiative, pioneering spirit</li>
+                        <li><strong>Expression 3:</strong> Creativity, communication, artistic expression</li>
+                        <li><strong>Destiny 8:</strong> Manifestation, business acumen, authority</li>
+                        <li><strong>Soul Urge 7:</strong> Intuition, analysis, spiritual insight</li>
+                    </ul>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="card-heading">
+                        <div class="card-number">02</div>
+                        <div>
+                            <h3 class="card-title">Relational Strengths</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        How you naturally connect with others, build relationships, and contribute to your communities and partnerships.
+                    </div>
+                    <ul class="example-list">
+                        <li><strong>Heart's Desire 2:</strong> Diplomacy, partnership skills, empathy</li>
+                        <li><strong>Personality 6:</strong> Nurturing, responsibility, service</li>
+                        <li><strong>Birth Day 9:</strong> Compassion, humanitarian focus, generosity</li>
+                        <li><strong>Maturity 4:</strong> Stability, reliability, building foundations</li>
+                    </ul>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="card-heading">
+                        <div class="card-number">03</div>
+                        <div>
+                            <h3 class="card-title">Growth Capacities</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Areas where you have exceptional potential for development, evolution, and mastery throughout your life journey.
+                    </div>
+                    <ul class="example-list">
+                        <li><strong>Challenge 5:</strong> Adaptability, freedom, embracing change</li>
+                        <li><strong>Pinnacle Cycles:</strong> Different developmental phases with specific focuses</li>
+                        <li><strong>Hidden Passion:</strong> Latent talents awaiting activation</li>
+                        <li><strong>Karmic Lessons:</strong> Integration of missing numerical qualities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-container" id="challenges-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <div>
+                    <h2 class="section-title">Understanding Challenges</h2>
+                    <p class="section-subtitle">Growth opportunities and integration points in your numerological blueprint</p>
+                </div>
+            </div>
+            
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="card-heading">
+                        <div class="card-number">04</div>
+                        <div>
+                            <h3 class="card-title">Life Lessons</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Recurring themes and patterns that offer opportunities for personal evolution, wisdom, and soul growth.
+                    </div>
+                    <ul class="example-list">
+                        <li><strong>Life Path Challenge:</strong> Core lesson for this lifetime</li>
+                        <li><strong>Karmic Debt Numbers:</strong> Past patterns requiring resolution</li>
+                        <li><strong>Personal Year Challenges:</strong> Annual focus areas for growth</li>
+                        <li><strong>Missing Numbers:</strong> Qualities to consciously develop</li>
+                    </ul>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="card-heading">
+                        <div class="card-number">05</div>
+                        <div>
+                            <h3 class="card-title">Balance Points</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Areas where finding equilibrium between opposing qualities leads to greater harmony, effectiveness, and peace.
+                    </div>
+                    <ul class="example-list">
+                        <li><strong>Independence ↔ Connection:</strong> Balancing autonomy with relationships</li>
+                        <li><strong>Logic ↔ Intuition:</strong> Integrating both ways of knowing</li>
+                        <li><strong>Action ↔ Reflection:</strong> Knowing when to move and when to pause</li>
+                        <li><strong>Structure ↔ Flow:</strong> Combining discipline with flexibility</li>
+                    </ul>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="card-heading">
+                        <div class="card-number">06</div>
+                        <div>
+                            <h3 class="card-title">Integration Areas</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Specific aspects of yourself that, when worked with consciously, can lead to significant personal transformation and wholeness.
+                    </div>
+                    <ul class="example-list">
+                        <li><strong>Shadow Numbers:</strong> Unconscious patterns to bring to light</li>
+                        <li><strong>Bridge Numbers:</strong> Connecting different aspects of self</li>
+                        <li><strong>Realization Number:</strong> Potential for self-actualization</li>
+                        <li><strong>Subconscious Self:</strong> Inner conflicts to reconcile</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <div class="philosophy-box">
+            <div class="philosophy-icon">
+                <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3 class="philosophy-title">The Philosophy of Self-Awareness</h3>
+            <p class="philosophy-text">
+                Your Matrix Destiny profile offers <strong>insights, not predictions</strong>. The numbers reveal potentials and patterns, but your choices determine your path. This tool is designed for self-reflection and personal growth, not fortune-telling. True empowerment comes from understanding both your natural gifts and your growth opportunities, then making conscious choices that align with your authentic self.
+            </p>
+            <p class="philosophy-text">
+                Remember: Your numerology chart is a map, but you are the traveler. Use these insights as a guide for self-understanding, not as a predetermined script for your life. The most powerful application of numerology is in developing greater self-awareness and making more aligned choices.
+            </p>
+        </div>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="https://matrixdestiny.net/" target="_blank" class="footer-link">
+                    <i class="fas fa-calculator"></i> Density Matrix Calculator
+                </a>
+                <a href="https://matrix-destiny-numerology.vercel.app/" target="_blank" class="footer-link">
+                    <i class="fas fa-cloud"></i> Vercel App Calculator
+                </a>
+                <a href="https://docs.google.com/spreadsheets/d/1TZGQj6pYflMwxT6P6ywGa8H7TcO8xd01LjSNFodW-lE/edit?usp=sharing" target="_blank" class="footer-link">
+                    <i class="fas fa-database"></i> Request Indexing
+                </a>
+            </div>
+            <p style="margin-bottom: 15px;">Matrix Destiny Profile Analysis &copy; 2023 | A Tool for Self-Awareness</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">This numerology profile is designed for personal reflection and growth. Use it as a guide for self-understanding, not as a definitive blueprint for your life.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particleContainer = document.createElement('div');
+            particleContainer.className = 'particles-container';
+            document.body.appendChild(particleContainer);
+            
+            const colors = ['#D4AF37', '#F4D03F', '#B8860B', '#FFE87C'];
+            
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() * 8 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 25 + 15;
+                const blur = Math.random() * 5 + 2;
+                
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${posX}vw;
+                    top: ${posY}vh;
+                    background-color: ${color};
+                    border-radius: 50%;
+                    filter: blur(${blur}px);
+                    opacity: ${Math.random() * 0.3 + 0.1};
+                    animation: floatParticle ${duration}s ease-in-out ${delay}s infinite;
+                `;
+                
+                particleContainer.appendChild(particle);
+            }
+            
+            // Add CSS for particle animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatParticle {
+                    0%, 100% { 
+                        transform: translate(0, 0) rotate(0deg); 
+                        opacity: 0.1;
+                    }
+                    25% { 
+                        transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(90deg); 
+                        opacity: 0.3;
+                    }
+                    50% { 
+                        transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px) rotate(180deg); 
+                        opacity: 0.2;
+                    }
+                    75% { 
+                        transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(270deg); 
+                        opacity: 0.4;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Scroll animation for sections
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('.section-container');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('fade-in');
+                }
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            animateOnScroll();
+            
+            // Initial animation for first section
+            document.getElementById('strengths-section').classList.add('fade-in');
+            
+            // Add click effects to tool cards
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-15px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-15px) scale(1.02)';
+                    }, 150);
+                });
+            });
+            
+            // Add hover effect to insight cards
+            document.querySelectorAll('.insight-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
